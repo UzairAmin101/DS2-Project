@@ -40,8 +40,9 @@ def height(node):
 
 class skewNode:
 
-    def __init__(self, value) -> None:
-        self.value = value
+    def __init__(self, priority, data) -> None:
+        self.priority = priority
+        self.data = data
         self.right = None
         self.left = None
         self.dist = 0
@@ -55,21 +56,28 @@ class skewNode:
 
 class skewHeap:
 
-    def __init__(self, leftist) -> None:
+    def __init__(self) -> None:
         self.root = None
         self.size = 0
-        self.leftist = leftist
+        # self.leftist = leftist
 
-    def insert(self, key):
-        x = skewNode(key)
+    def is_empty(self):
+        if self.size == 0:
+            return True
+        else:
+            return False
+
+    def enqueue(self, priority, data):
+        x = skewNode(priority, data)
         self.size += 1
         self.root = self.merge(self.root, x)
 
     def get_min(self):
-        return self.root.value
+        return self.root.data
 
-    def extract_min(self):
-        x = self.root.value
+    def dequeue(self):
+        x = self.root.data
+        self.size -= 1
         self.root = self.merge(self.root.left, self.root.right)
         return x
 
@@ -83,7 +91,7 @@ class skewHeap:
         if h2 == None:
             return h1
 
-        if h2.value < h1.value:
+        if h2.priority < h1.priority:
             h2, h1 = h1, h2
 
         # if not self.leftist:
@@ -96,30 +104,55 @@ class skewHeap:
 
         return h1
 
+    def p(self):
+        print("test")
 
-sh = skewHeap(True)
-sh.insert(10)
-sh.insert(9)
-sh.insert(56)
-sh.insert(1)
-sh.insert(99)
-sh.insert(72)
-sh.insert(6)
+    def traverse(self):
+        stack = []
+        stack.append(self.root)
+        visited = []
 
-# print(sh.get_min())
-# printLevelOrder(sh.root)
-# print()
-# print(sh.extract_min())
-# printLevelOrder(sh.root)
+        while stack:
+            x = stack.pop()
+            visited.append(x.data)
+            if x.left != None:
+                stack.append(x.left)
+            if x.right != None:
+                stack.append(x.right)
 
-# print(sh.root.value)
-# print(sh.root.left.value)
-# print(sh.root.left.left.value)
-# print(sh.root.left.left.left.value)
-# print(sh.root.left.left.left.left.value)
-# print(sh.root.right.value)
-# print(sh.root.right.left.value)
-# print(sh.root.right.right.right.value)
+        return visited
 
 
-print(sh.root.right.left.left.value)
+# sh = skewHeap(True)
+# sh.insert(10)
+# sh.insert(9)
+# sh.insert(56)
+# sh.insert(1)
+# sh.insert(99)
+# sh.insert(72)
+# sh.insert(6)
+
+# # print(sh.get_min())
+# # printLevelOrder(sh.root)
+# # print()
+# # print(sh.extract_min())
+# # printLevelOrder(sh.root)
+
+# # print(sh.root.value)
+# # print(sh.root.left.value)
+# # print(sh.root.left.left.value)
+# # print(sh.root.left.left.left.value)
+# # print(sh.root.left.left.left.left.value)
+# # print(sh.root.right.value)
+# # print(sh.root.right.left.value)
+# # print(sh.root.right.right.right.value)
+
+sh = skewHeap()
+sh.enqueue(1, 10)
+sh.enqueue(2, 5)
+sh.enqueue(0, 99)
+sh.enqueue(100, 9)
+print(sh.get_min())
+print(sh.dfs())
+
+# print(sh.root.right.left.left.value)
