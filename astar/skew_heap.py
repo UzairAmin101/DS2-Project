@@ -104,6 +104,25 @@ class skewHeap:
 
         return h1
 
+    def p(self):
+        print("test")
+
+    def dfs(self):
+        stack = []
+        if self.root != None:
+            stack.append(self.root)
+        visited = []
+
+        while stack:
+            x = stack.pop()
+            visited.append(x.data)
+            if x.left != None:
+                stack.append(x.left)
+            if x.right != None:
+                stack.append(x.right)
+
+        return visited
+
 
 # sh = skewHeap(True)
 # sh.insert(10)
@@ -129,9 +148,12 @@ class skewHeap:
 # # print(sh.root.right.left.value)
 # # print(sh.root.right.right.right.value)
 
-sh = skewHeap()
-sh.enqueue(1, 10)
-sh.enqueue(2, 5)
-print(sh.get_min())
+# sh = skewHeap()
+# sh.enqueue(1, 10)
+# sh.enqueue(2, 5)
+# sh.enqueue(0, 99)
+# sh.enqueue(100, 9)
+# print(sh.get_min())
+# print(sh.dfs())
 
 # print(sh.root.right.left.left.value)

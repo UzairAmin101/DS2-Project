@@ -136,7 +136,7 @@ def algorithm(win, grid, ROWS, width, start, target):
                 # queue_elements = [i[1] for i in queue]
                 # print(queue.dfs())
                 # queue.p()
-                # queue_elements = queue.traverse()
+                queue_elements = queue.dfs()
                 if neighbour not in queue_elements:
                     # queue = enqueue(queue, (f_values[neighbour], neighbour))
                     queue.enqueue(f_values[neighbour], neighbour)
