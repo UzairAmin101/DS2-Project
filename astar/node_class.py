@@ -2,13 +2,13 @@ import pygame
 
 
 # Defining colors
-grey = (128, 128, 128)
+black = (128, 128, 128)
 blue = (0, 0, 255)
-maroon = (128, 0, 0)
-yellow = (255, 255, 0)
+green = (24, 245, 12)
+red = (245, 60, 12)
 white = (255, 255, 255)
-black = (0, 0, 0)
-purple = (128, 0, 128)
+grey = (0, 0, 0)
+ocean = (16, 118, 117)
 
 
 # Making the node class
@@ -44,11 +44,11 @@ class Node:
     # Sets the node state as an explored node
     def set_explored(self):
         self.color = grey
-        self.state = "yellow"
+        self.state = "red"
 
     # Sets the node state as an open node
     def set_open(self):
-        self.color = purple
+        self.color = ocean
         self.state = "open"
 
     # Sets the node state as a wall node
@@ -58,12 +58,12 @@ class Node:
 
     # Sets the node state as the target
     def set_target(self):
-        self.color = maroon
+        self.color = green
         self.state = "target"
 
     # Sets the node state to path
     def set_path(self):
-        self.color = yellow
+        self.color = red
         self.state = "path"
 
     # Draws the node on the grid
