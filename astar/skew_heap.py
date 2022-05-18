@@ -59,7 +59,6 @@ class skewHeap:
     def __init__(self) -> None:
         self.root = None
         self.size = 0
-        # self.leftist = leftist
 
     def is_empty(self):
         if self.size == 0:
@@ -94,18 +93,11 @@ class skewHeap:
         if h2.priority < h1.priority:
             h2, h1 = h1, h2
 
-        # if not self.leftist:
         h1.left, h1.right = h1.right, h1.left
 
         h1.left = self.merge(h2, h1.left)
-        # if self.leftist:
-        #     if h1.dist != 0 and h1.left.dist < h1.right.dist:
-        #         h1.left, h1.right = h1.right, h1.left
 
         return h1
-
-    def p(self):
-        print("test")
 
     def dfs(self):
         stack = []
@@ -124,36 +116,12 @@ class skewHeap:
         return visited
 
 
-# sh = skewHeap(True)
-# sh.insert(10)
-# sh.insert(9)
-# sh.insert(56)
-# sh.insert(1)
-# sh.insert(99)
-# sh.insert(72)
-# sh.insert(6)
-
-# # print(sh.get_min())
-# # printLevelOrder(sh.root)
-# # print()
-# # print(sh.extract_min())
-# # printLevelOrder(sh.root)
-
-# # print(sh.root.value)
-# # print(sh.root.left.value)
-# # print(sh.root.left.left.value)
-# # print(sh.root.left.left.left.value)
-# # print(sh.root.left.left.left.left.value)
-# # print(sh.root.right.value)
-# # print(sh.root.right.left.value)
-# # print(sh.root.right.right.right.value)
-
 # sh = skewHeap()
-# sh.enqueue(1, 10)
-# sh.enqueue(2, 5)
-# sh.enqueue(0, 99)
-# sh.enqueue(100, 9)
-# print(sh.get_min())
-# print(sh.dfs())
-
-# print(sh.root.right.left.left.value)
+# sh.enqueue(4, 44)
+# sh.enqueue(5, 11)
+# sh.enqueue(5, 88)
+# sh.enqueue(4, 69)
+# print(sh.dequeue())
+# print(sh.dequeue())
+# print(sh.dequeue())
+# print(sh.dequeue())

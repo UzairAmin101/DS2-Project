@@ -9,30 +9,6 @@ width = 600
 window = pygame.display.set_mode((width, width))
 pygame.display.set_caption("DSA Project")
 
-# Making priority queue functions
-
-
-# def enqueue(queue, data):
-#     count = -1
-#     for i in range(len(queue)):
-#         count += 1
-#         if data[0] >= queue[count][0]:
-#             queue.insert(count, data)
-#             return queue
-#     queue.append(data)
-#     return queue
-
-
-# def dequeue(queue):
-#     return queue.pop()
-
-
-# def is_empty(queue):
-#     if len(queue) == 0:
-#         return True
-#     else:
-#         return False
-
 
 # Using manhattan distance to get the H value for the target node
 def h_function(p1, p2):
@@ -133,12 +109,8 @@ def algorithm(win, grid, ROWS, width, start, target):
                 f_values[neighbour] = temp + h_value
 
                 # Adding the neighbours of the current node in the queue so they are considered next
-                # queue_elements = [i[1] for i in queue]
-                # print(queue.dfs())
-                # queue.p()
                 queue_elements = queue.dfs()
                 if neighbour not in queue_elements:
-                    # queue = enqueue(queue, (f_values[neighbour], neighbour))
                     queue.enqueue(f_values[neighbour], neighbour)
                     neighbour.set_open()
 
